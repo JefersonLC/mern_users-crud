@@ -1,4 +1,4 @@
-const config = require('./enviroments');
+const config = require('./environment');
 
 module.exports = {
   dialect: 'mysql',
