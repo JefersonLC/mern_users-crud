@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const UserController = require('./controllers/user.controller');
 const { userSchema } = require('./db/schemas/user.schema');
 
@@ -10,6 +11,7 @@ app.listen(PORT, () => {
   console.log('Server on port ' + PORT);
 });
 
+app.use(cors())
 app.use(express.json());
 
 // ROUTES
