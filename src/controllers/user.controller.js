@@ -1,10 +1,10 @@
-const UserService = require('../services/user.service');
+const sequelize = require('../db');
 
-const service = new UserService();
+const { User } = sequelize.models;
 
 async function find(req, res, next) {
   try {
-    const users = await service.find();
+    const users = await User.findAll();
     res.json(users);
   } catch (error) {
     next(error);
@@ -14,7 +14,7 @@ async function find(req, res, next) {
 async function create(req, res, next) {
   try {
     const data = req.body;
-    const newUser = await service.create(data);
+    const newUser = await User.create(data);
     res.json(newUser);
   } catch (error) {
     next(error);
