@@ -54,6 +54,9 @@ const User = [
       set(value) {
         this.setDataValue('phone', value.trim());
       },
+      get() {
+        return '+51 ' + this.getDataValue('phone');
+      },
     },
   },
   {
