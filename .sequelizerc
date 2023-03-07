@@ -1,6 +1,0 @@
-module.exports = {
-  'config': './src/config/ormconfig.js',
-  'models-path': './src/db/models/',
-  'seeders-path': './src/db/seeders/',
-  'migrations-path': './src/db/migrations/',
-};
