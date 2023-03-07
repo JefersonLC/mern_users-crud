@@ -2,6 +2,10 @@
   "name": "test",
   "version": "1.0.0",
   "description": "",
+  "workspaces": [
+    "client",
+    "."
+  ],
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/",
@@ -20,7 +24,8 @@
     "@types/sequelize": "4.28.14",
     "@types/yup": "0.32.0",
     "nodemon": "2.0.20",
-    "sequelize-cli": "^6.6.0"
+    "sequelize-cli": "6.6.0",
+    "standard": "^17.0.0"
   },
   "dependencies": {
     "cors": "2.8.5",
@@ -29,5 +34,8 @@
     "mysql2": "3.1.2",
     "sequelize": "6.29.0",
     "yup": "1.0.1"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
   }
 }
