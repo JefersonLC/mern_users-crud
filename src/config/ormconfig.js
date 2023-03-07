@@ -1,12 +1,12 @@
-const config = require('./database');
+const config = require('./database')
 
 module.exports = {
   development: {
     ...config,
-    logging: true,
+    logging: true
   },
   production: {
     ...config,
-    logging: false,
-  },
-};
+    logging: false
+  }
+}

@@ -1,4 +1,4 @@
-const config = require('./environment');
+const config = require('./environment')
 
 module.exports = {
   dialect: 'mysql',
@@ -6,5 +6,5 @@ module.exports = {
   username: config.username,
   password: config.password,
   port: Number(config.port),
-  database: config.database,
-};
+  database: config.database
+}

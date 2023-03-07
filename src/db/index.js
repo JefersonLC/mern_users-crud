@@ -1,13 +1,13 @@
-const { Sequelize } = require('sequelize');
-const config = require('../config/database');
-const User = require('./models/user.model');
+const { Sequelize } = require('sequelize')
+const config = require('../config/database')
+const User = require('./models/user.model')
 
 const sequelize = new Sequelize({
   ...config,
   sync: false,
-  logging: false,
-});
+  logging: false
+})
 
-sequelize.define(...User);
+sequelize.define(...User)
 
-module.exports = sequelize;
+module.exports = sequelize

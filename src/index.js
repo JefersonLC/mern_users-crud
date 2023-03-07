@@ -1,40 +1,40 @@
-const express = require('express');
-const cors = require('cors');
-const UserController = require('./controllers/user.controller');
-const { validator } = require('./middlewares/validator');
-const { addUserSchema, updateUserSchema } = require('./db/schemas/user.schema');
-const { EmptyResultError } = require('sequelize');
-const { ValidationError } = require('yup');
+const express = require('express')
+const cors = require('cors')
+const UserController = require('./controllers/user.controller')
+const { validator } = require('./middlewares/validator')
+const { addUserSchema, updateUserSchema } = require('./db/schemas/user.schema')
+const { EmptyResultError } = require('sequelize')
+const { ValidationError } = require('yup')
 
-const app = express();
+const app = express()
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
-  console.log('Server on port ' + PORT);
-});
+  console.log('Server on port ' + PORT)
+})
 
-app.use(cors());
-app.use(express.json());
+app.use(cors())
+app.use(express.json())
 
 // ROUTES
 
 app
   .route('/')
   .get(UserController.find)
-  .post(validator({ schema: addUserSchema }), UserController.create);
+  .post(validator({ schema: addUserSchema }), UserController.create)
 
 app
   .route('/:id')
   .get(UserController.findOne)
   .patch(validator({ schema: updateUserSchema }), UserController.update)
-  .delete(UserController.remove);
+  .delete(UserController.remove)
 
-//ERROR HANDLING
+// ERROR HANDLING
 app.use((error, req, res, next) => {
-  console.log(error);
-  next(error);
-});
+  console.log(error)
+  next(error)
+})
 
 app.use((error, req, res, next) => {
   if (error instanceof ValidationError) {
@@ -45,24 +45,24 @@ app.use((error, req, res, next) => {
       info: error.errors,
       inner: error.inner.map((e) => ({
         path: e.path,
-        errors: e.errors,
-      })),
-    });
+        errors: e.errors
+      }))
+    })
   }
-  next(error);
-});
+  next(error)
+})
 
 app.use((error, req, res, next) => {
   if (error instanceof EmptyResultError) {
     return res.status(404).json({
       error: error.message,
       status: 404,
-      message: "The user ID you entered doesn't exist",
-    });
+      message: "The user ID you entered doesn't exist"
+    })
   }
-  next(error);
-});
+  next(error)
+})
 
 app.use((error, req, res, next) => {
-  res.json(error);
-});
+  res.json(error)
+})
