@@ -10,7 +10,7 @@ const phone = Yup.string()
   .matches(/^9\d{8}/, 'Invalid phone number')
   .typeError('Must be a string');
 
-const userSchema = Yup.object({
+const addUserSchema = Yup.object({
   name: name.required('Name is required'),
   lastname: lastname.required('Lastname is required'),
   age: age.required('Age is required'),
@@ -18,4 +18,12 @@ const userSchema = Yup.object({
   phone: phone.required('Phone is required'),
 });
 
-module.exports = { userSchema };
+const updateUserSchema = Yup.object({
+  name: name,
+  lastname: lastname,
+  age: age,
+  email: email,
+  phone: phone,
+});
+
+module.exports = { addUserSchema, updateUserSchema };
