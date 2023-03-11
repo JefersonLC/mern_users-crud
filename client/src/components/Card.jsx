@@ -22,9 +22,9 @@ export default function Card ({ user }) {
           <li className='item'>Email: {user.email}</li>
         </ul>
       </div>
-      <div>
-        <Button className='btn'>Modificar</Button>
-        <Button className='btn'>Eliminar</Button>
+      <div className='card-footer'>
+        <Button className='btn btn-modify'>Modificar</Button>
+        <Button className='btn btn-delete'>Eliminar</Button>
       </div>
     </div>
   )
