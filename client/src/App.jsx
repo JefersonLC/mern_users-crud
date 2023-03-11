@@ -4,11 +4,13 @@ import './styles/App.css'
 function App () {
   return (
     <>
-      <nav>
-        <Link to='.'>Home</Link>
-        <Link to='add'>Add</Link>
+      <nav className='nav'>
+        <Link className='link' to='.'>Home</Link>
+        <Link className='link' to='add'>Add</Link>
       </nav>
-      <Outlet />
+      <div className='container'>
+        <Outlet />
+      </div>
     </>
   )
 }
