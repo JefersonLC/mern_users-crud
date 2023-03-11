@@ -3,7 +3,7 @@ const cors = require('cors')
 const UserController = require('./controllers/user.controller')
 const { validator } = require('./middlewares/validator')
 const { addUserSchema, updateUserSchema } = require('./db/schemas/user.schema')
-const { EmptyResultError } = require('sequelize')
+const { EmptyResultError, UniqueConstraintError } = require('sequelize')
 const { ValidationError } = require('yup')
 
 const app = express()
@@ -18,7 +18,6 @@ app.use(cors())
 app.use(express.json())
 
 // ROUTES
-
 app
   .route('/')
   .get(UserController.find)
@@ -58,6 +57,18 @@ app.use((error, req, res, next) => {
       error: error.message,
       status: 404,
       message: "The user ID you entered doesn't exist"
+    })
+  }
+  next(error)
+})
+
+app.use((error, req, res, next) => {
+  if (error instanceof UniqueConstraintError) {
+    return res.status(400).json({
+      error: error.message,
+      field: error.fields,
+      status: 400,
+      message: 'Email is already registered'
     })
   }
   next(error)

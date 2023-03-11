@@ -1,7 +1,5 @@
 const { EmptyResultError } = require('sequelize')
-const sequelize = require('../db')
-
-const { User } = sequelize.models
+const { models: { User } } = require('../db')
 
 async function findByPk (id) {
   const user = await User.findByPk(id)
