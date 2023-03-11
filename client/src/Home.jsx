@@ -9,11 +9,17 @@ export default function Home () {
       .then((res) => res.json())
       .then((data) => setData(data))
   }, [])
+
   return (
-    <div className='cards'>
-      {data.map((user) => (
-        <Card key={user.id} user={user} />
-      ))}
-    </div>
+    <>
+      <section className='search'>
+        <input className='input' type='text' placeholder='Search user' />
+      </section>
+      <section className='cards'>
+        {data.map((user) => (
+          <Card key={user.id} user={user} />
+        ))}
+      </section>
+    </>
   )
 }
