@@ -8,10 +8,54 @@
 li {
   list-style: none;
 }
+.nav {
+  position: absolute;
+  width: 100%;
+  height: 4rem;
+  background-color: #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  height: 100%;
+  display: grid;
+  align-content: center;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: #eee;
+}
+
+.link:hover {
+  background-color: #777;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: #666;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+
+.search {
+  text-align: center;
+  padding-block: 2rem;
+}
+
+.input {
+  width: 15rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.3rem;
+  border: none;
+}
 
 .cards {
   display: flex;
+  justify-content: center;
   gap: 1rem;
+  margin: auto;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -44,6 +88,11 @@ li {
   margin-top: 0.5rem;
 }
 
+.card-footer {
+  display: flex;
+  gap: 1rem;
+}
+
 .item {
   margin-top: 0.55rem;
 }
@@ -53,4 +102,102 @@ li {
   border-radius: 0.3rem;
   border: none;
   cursor: pointer;
+}
+
+.btn-modify {
+  background-color: #f7be05;
+}
+
+.btn-modify:hover {
+  background-color: #e7b306;
+}
+
+.btn-delete {
+  background-color: #f70505;
+}
+
+.btn-delete:hover {
+  background-color: #e70606;
+}
+
+.btn-add {
+  background-color: #05f711;
+}
+
+.btn-add:hover {
+  background-color: #06e737;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form {
+  padding: 2rem 3rem;
+  background-color: #777;
+  border-radius: 0.3rem;
+  box-shadow: 1px 1px 5px 1px #000;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  margin-bottom: 1rem;
+}
+
+.form-group > span {
+  font-size: .75rem;
+  padding-left: .3rem;
+  color: #ff7b00;
+}
+
+.alert {
+  padding: 1.25rem;
+  border-radius: .3rem;
+  background-color: #ddd;
+  box-shadow: 1px 1px 5px 1px #000;
+}
+
+.alert > hr {
+  margin-block: .65rem;
+}
+
+.alert-error {
+  background-color: #ee7272;
+  color: #a52b2b;
+}
+
+.alert-error > hr {
+  color: #a52b2b;
+  border-color: #a52b2b;
+  background-color: #a52b2b;
+}
+
+.alert-success {
+  background-color: #72ee78;
+  color: #3a9623;
+}
+
+.alert-success > hr {
+  color: #3a9623;
+  border-color: #3a9623;
+  background-color: #3a9623;
+}
+
+@media screen and (min-width: 576px) {
+  .cards {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cards {
+    justify-content: flex-start;
+  }
 }
