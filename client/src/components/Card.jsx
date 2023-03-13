@@ -1,13 +1,11 @@
+import { Link } from 'react-router-dom'
 import Button from './Button'
-import useColor from '../hooks/useColor'
 
-export default function Card ({ user }) {
-  const { randomColor } = useColor(['#F00', '#0F0', '#00F'])
-
+export default function Card ({ user, remove }) {
   return (
     <div className='card'>
       <div className='card-header'>
-        <span className='avatar' style={{ backgroundColor: randomColor }}>
+        <span className='avatar' style={{ backgroundColor: '#F33' }}>
           {user.name[0]}
         </span>
         <span className='names'>
@@ -23,8 +21,8 @@ export default function Card ({ user }) {
         </ul>
       </div>
       <div className='card-footer'>
-        <Button className='btn btn-modify'>Modificar</Button>
-        <Button className='btn btn-delete'>Eliminar</Button>
+        <Link to={'user/' + user.id} className='btn btn-modify'>Modify</Link>
+        <Button className='btn btn-delete' action={remove} id={user.id}>Delete</Button>
       </div>
     </div>
   )
