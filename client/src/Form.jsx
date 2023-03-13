@@ -1,67 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useState } from 'react'
-import * as Yup from 'yup'
 import Alert from './components/Alert'
-import Button from './components/Button'
-
-const taskValues = {
-  name: '',
-  lastname: '',
-  email: '',
-  age: '',
-  phone: ''
-}
-
-const taskSchema = Yup.object({
-  name: Yup.string()
-    .max(30, 'Too Long')
-    .typeError('Must be a string')
-    .required('Name is required'),
-  lastname: Yup.string()
-    .max(30, 'Too Long')
-    .typeError('Must be a string')
-    .required('Lastname is required'),
-  email: Yup.string()
-    .email('Invalid email')
-    .typeError('Must be a string')
-    .required('Email is required'),
-  age: Yup.number()
-    .integer('Must be an integer')
-    .typeError('Must be a number')
-    .required('Age is required'),
-  phone: Yup.string()
-    .matches(/^9\d{8}$/, 'Invalid phone number')
-    .typeError('Must be a string')
-    .required('Phone is required')
-})
-
-const formInputs = [
-  {
-    name: 'name',
-    type: 'text',
-    placeholder: 'Name'
-  },
-  {
-    name: 'lastname',
-    type: 'text',
-    placeholder: 'Lastame'
-  },
-  {
-    name: 'email',
-    type: 'email',
-    placeholder: 'Email'
-  },
-  {
-    name: 'age',
-    type: 'number',
-    placeholder: 'Age'
-  },
-  {
-    name: 'phone',
-    type: 'text',
-    placeholder: 'Phone'
-  }
-]
+import { formInputs, taskSchema } from './utils/form'
 
 export default function AddForm () {
   const [error, setError] = useState(null)
@@ -88,7 +28,13 @@ export default function AddForm () {
   return (
     <div className='form-container'>
       <Formik
-        initialValues={taskValues}
+        initialValues={{
+          name: '',
+          lastname: '',
+          email: '',
+          age: '',
+          phone: ''
+        }}
         validationSchema={taskSchema}
         onSubmit={(values, { resetForm }) => {
           handleClick(values)
@@ -111,9 +57,9 @@ export default function AddForm () {
               <ErrorMessage name={input.name} component='span' />
             </div>
           ))}
-          <Button className='btn btn-add' type='submit'>
+          <button className='btn btn-add' type='submit'>
             Add Task
-          </Button>
+          </button>
         </Form>
       </Formik>
       {error && <Alert type='error'>{error}</Alert>}
